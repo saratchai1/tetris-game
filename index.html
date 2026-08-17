@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090b14" />
+  <meta name="description" content="A responsive Tetris-style browser game built with HTML, CSS, and JavaScript." />
+  <title>Tetris Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">CLASSIC BLOCK PUZZLE</p>
+      <h1>TETRIS</h1>
+      <p class="subtitle">Clear lines, build combos, and chase your high score.</p>
+    </header>
+
+    <section class="game-layout" aria-label="Tetris game">
+      <aside class="panel stats-panel" aria-label="Game statistics">
+        <div class="stat-card">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>High score</span>
+          <strong id="high-score">0</strong>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card compact">
+            <span>Lines</span>
+            <strong id="lines">0</strong>
+          </div>
+          <div class="stat-card compact">
+            <span>Level</span>
+            <strong id="level">1</strong>
+          </div>
+        </div>
+
+        <div class="preview-card">
+          <span>Hold</span>
+          <canvas id="hold-canvas" width="120" height="120" aria-label="Held piece"></canvas>
+        </div>
+      </aside>
+
+      <section class="board-wrap">
+        <div class="board-frame">
+          <canvas id="game-canvas" width="300" height="600" aria-label="Tetris play field"></canvas>
+          <div id="overlay" class="overlay" role="status" aria-live="polite">
+            <div class="overlay-card">
+              <p id="overlay-kicker">READY?</p>
+              <h2 id="overlay-title">PRESS START</h2>
+              <p id="overlay-message">Use the keyboard or the controls below.</p>
+              <button id="overlay-button" class="primary-button" type="button">Start game</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-row" aria-label="Game actions">
+          <button id="start-button" class="primary-button" type="button">Start</button>
+          <button id="pause-button" class="secondary-button" type="button" disabled>Pause</button>
+          <button id="restart-button" class="secondary-button" type="button">Restart</button>
+        </div>
+      </section>
+
+      <aside class="panel next-panel" aria-label="Upcoming pieces and controls">
+        <div class="preview-card">
+          <span>Next</span>
+          <canvas id="next-canvas" width="120" height="240" aria-label="Next pieces"></canvas>
+        </div>
+
+        <div class="controls-card desktop-help">
+          <h2>Controls</h2>
+          <dl>
+            <div><dt>Move</dt><dd>← →</dd></div>
+            <div><dt>Soft drop</dt><dd>↓</dd></div>
+            <div><dt>Rotate</dt><dd>↑ / Z</dd></div>
+            <div><dt>Hard drop</dt><dd>Space</dd></div>
+            <div><dt>Hold</dt><dd>C</dd></div>
+            <div><dt>Pause</dt><dd>P</dd></div>
+          </dl>
+        </div>
+      </aside>
+    </section>
+
+    <section class="mobile-controls" aria-label="Touch controls">
+      <button type="button" data-action="hold" aria-label="Hold piece">HOLD</button>
+      <button type="button" data-action="rotate-left" aria-label="Rotate counterclockwise">↶</button>
+      <button type="button" data-action="rotate-right" aria-label="Rotate clockwise">↷</button>
+      <button type="button" data-action="left" aria-label="Move left">←</button>
+      <button type="button" data-action="down" aria-label="Soft drop">↓</button>
+      <button type="button" data-action="right" aria-label="Move right">→</button>
+      <button class="wide" type="button" data-action="drop" aria-label="Hard drop">HARD DROP</button>
+    </section>
+
+    <footer>
+      <p>Built with Canvas and vanilla JavaScript. Progress is saved locally in your browser.</p>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
